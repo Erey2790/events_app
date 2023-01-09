@@ -1,28 +1,27 @@
-const Page = () => {
-    return (
-        <div>
-        <h1>Events Page</h1>
-            <div>
-            <a href=''> 
-        <img />
-        <h2> Events in London</h2>
-        
-       </a>
+const EventsPage = () => {
+  return (
+    <div>
+      <h1>Events</h1>
+      <div>
+        <a href="">
+          <img />
+          <h2> Events in London</h2>
+        </a>
 
-       <a href=''> 
-        <img />
-        <h2> Events in San Francisco</h2>
-        
-       </a>
+        <a href="">
+          <img />
+          <h2> Events in San Francisco</h2>
+        </a>
 
-       <a href=''> 
-        <img />
-        <h2> Events in London</h2>
-        
-       </a>
-            </div>
-        </div>
-    )
-}
+        <a href="">
+          <img />
+          <h2> Events in London</h2>
+        </a>
+      </div>
+    </div>
+  );
+};
 
-export default Page;
+export default EventsPage;
+
+

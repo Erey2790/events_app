@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({title}) {
   return (
     <>
       <Head>
@@ -24,7 +24,7 @@ export default function Home() {
         </nav>
       </header>
       <main className={styles.main}>
-       <a href=''> 
+       <a href='/events/london'> 
         <img />
         <h2> Events in London</h2>
         <p>
@@ -32,7 +32,7 @@ export default function Home() {
         </p>
        </a>
 
-       <a href=''> 
+       <a href='/events/sanfran'> 
         <img />
         <h2> Events in San Francisco</h2>
         <p>
@@ -40,9 +40,9 @@ export default function Home() {
         </p>
        </a>
 
-       <a href=''> 
+       <a href='/events/barcelona'> 
         <img />
-        <h2> Events in London</h2>
+        <h2> Events in Barcelona</h2>
         <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
         </p>
@@ -56,4 +56,12 @@ export default function Home() {
       </footer>
     </>
   )
+}
+
+export function getServerSideProps() {
+  return {
+      props: {
+          title: 'hello everyone'
+      }
+  }
 }
