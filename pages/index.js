@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "../styles/Home.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({title}) {
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -18,50 +18,35 @@ export default function Home({title}) {
       <header>
         <nav>
           <img />
-          <a href='/'> Home</a>
-          <a href='/events'> Events</a>
-          <a href='/about-us'> About Us</a>
+          <a href="/"> Home</a>
+          <a href="/events"> Events</a>
+          <a href="/about-us"> About Us</a>
         </nav>
       </header>
       <main className={styles.main}>
-       <a href='/events/london'> 
-        <img />
-        <h2> Events in London</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-        </p>
-       </a>
-
-       <a href='/events/sanfran'> 
-        <img />
-        <h2> Events in San Francisco</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-        </p>
-       </a>
-
-       <a href='/events/barcelona'> 
-        <img />
-        <h2> Events in Barcelona</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-        </p>
-       </a>
+        {data.map((ev) => (
+          <a key={ev.id} href={`/events/${ev.id}`}>
+            <Image width= {200} height={100} alt={ev.title} src={ev.image} />
+            <h2>{ev.title}</h2>
+            <p>{ev.description}</p>
+          </a>
+        ))}
+     
       </main>
 
-      
-
       <footer className={styles.footer}>
-        <p> © 2022 Time to Code - A Project with Next.JS</p>
+        <p> © 2023 Time to Code - A Project with Next.JS</p>
       </footer>
     </>
-  )
+  );
 }
 
-export function getServerSideProps() {
+export async function getServerSideProps() {
+  const { events_categories } = await import("/data/data.json");
+  console.log(events_categories);
   return {
-      props: {
-          title: 'hello everyone'
-      }
-  }
+    props: {
+      data: events_categories,
+    },
+  };
 }
