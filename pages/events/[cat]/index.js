@@ -1,26 +1,17 @@
-const EventsCatPage = () => {
+import Image from "next/image";
+
+const EventsCatPage = ({ data }) => {
   return (
     <div>
       <h1>Events in London</h1>
       <div>
-        <a href="/events/london/ev1">
-          <img /> <h2> Event 1 </h2>
-        </a>
-        <a href="">
-          <img /> <h2> Event 2 </h2>
-        </a>
-        <a href="">
-          <img /> <h2> Event 3 </h2>
-        </a>
-        <a href="">
-          <img /> <h2> Event 4 </h2>
-        </a>
-        <a href="">
-          <img /> <h2> Event 5 </h2>
-        </a>
-        <a href="">
-          <img /> <h2> Event 6 </h2>
-        </a>
+        {data.map((ev) => (
+          <a key={ev.id} href={`/events/${ev.city}/${ev.id}`}>
+            <Image width={300} height={300} alt={ev.title} src={ev.image} />
+            <h2> {ev.title} </h2>
+            <p> {ev.description} </p>
+          </a>
+        ))}
       </div>
     </div>
   );
