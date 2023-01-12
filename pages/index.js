@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { HomePage } from "../src/components/home/home-page";
 import { Footer } from "../src/components/footer/footer";
+import { Header } from "../src/components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,20 +19,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <nav>
-          <img />
-          <Link href="/" legacyBehavior>
-          <a> Home</a>
-          </Link>
-          <Link href="/events" legacyBehavior>
-          <a> Events</a>
-          </Link>
-          <Link  href="/about-us" legacyBehavior>
-          <a> About Us</a>
-          </Link>
-        </nav>
-      </header>
+      <Header />
       <HomePage data={data}/>
 
       <Footer />
