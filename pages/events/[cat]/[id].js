@@ -1,44 +1,43 @@
 import Image from "next/image";
 
-const EventPage = ( {data} ) => {
-    console.log(data)
-    return (
-        <div>
-            <Image src={data.image} width={800} height={500} alt={data.title} />
-            <h1>{data.title}</h1>
-            <p>{data.description}</p>
-        </div>
-    )
-}
+const EventPage = ({ data }) => {
+  console.log(data);
+  return (
+    <div>
+      <Image src={data.image} width={800} height={500} alt={data.title} />
+      <h1>{data.title}</h1>
+      <p>{data.description}</p>
+    </div>
+  );
+};
 
 export default EventPage;
 
 export async function getStaticPaths() {
-    const data = await import("/data/data.json");
-    const allEvents = data.allEvents;
-   
+  const data = await import("/data/data.json");
+  const allEvents = data.allEvents;
 
-    const allPaths = allEvents.map((path) => {
-        return {
-            params: {
-                cat: path.city,
-                id: path.id,
-            },
-        };
-    });
+  const allPaths = allEvents.map((path) => {
     return {
-        paths: allPaths,
-        fallback: false
+      params: {
+        cat: path.city,
+        id: path.id,
+      },
     };
+  });
+  return {
+    paths: allPaths,
+    fallback: false,
+  };
 }
 
 export async function getStaticProps(context) {
-    console.log(context)
-    const { allEvents } = await import('/data/data.json');
-    const id = context?.params.id;
+  console.log(context);
+  const { allEvents } = await import("/data/data.json");
+  const id = context?.params.id;
 
-    const eventData = allEvents.find((ev) => ev.id === id);
-    return {
-        props: { data: eventData}
-    }
+  const eventData = allEvents.find((ev) => ev.id === id);
+  return {
+    props: { data: eventData },
+  };
 }
