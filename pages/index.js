@@ -4,6 +4,7 @@ import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { HomePage } from "../src/components/home/home-page";
+import { Footer } from "../src/components/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,9 +34,7 @@ export default function Home({ data }) {
       </header>
       <HomePage data={data}/>
 
-      <footer className={styles.footer}>
-        <p> © 2023 Time to Code - A Project with Next.JS</p>
-      </footer>
+      <Footer />
     </>
   );
 }
