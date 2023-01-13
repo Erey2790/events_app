@@ -1,21 +1,22 @@
 import Link from "next/link";
 
-
 export const Header = () => {
-    return (
-        <header>
+  return (
+    <header>
+      <div>
         <nav>
           <img />
           <Link href="/" legacyBehavior>
-          <a> Home</a>
+            <a> Home</a>
           </Link>
           <Link href="/events" legacyBehavior>
-          <a> Events</a>
+            <a> Events</a>
           </Link>
-          <Link  href="/about-us" legacyBehavior>
-          <a> About Us</a>
+          <Link href="/about-us" legacyBehavior>
+            <a> About Us</a>
           </Link>
         </nav>
-      </header>
-    )
-}
+      </div>
+    </header>
+  );
+};
