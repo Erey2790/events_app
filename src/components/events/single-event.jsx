@@ -47,7 +47,7 @@ const SingleEvent = ({ data }) => {
       <p>{data.description}</p>
       <form onSubmit={onSubmit} className="email_registration">
         <label>Get Registered for this event! </label>
-        <input ref={inputEmail}  id="email" placeholder="please insert your email here" />
+        <input ref={inputEmail} type="email" id="email" placeholder="please insert your email here" />
         <button type="submit">Submit</button>
       </form>
       <p>{message}</p>
