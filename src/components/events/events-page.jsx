@@ -11,7 +11,7 @@ const AllEvents = ({ data }) => {
           <Link key={ev.id} href={`/events/${ev.id}`} legacyBehavior>
             <a className='card'>
                 <Image src={ev.image} alt={ev.title} width={300} height={300} />
-                <h3>{ev.title}</h3>
+                <h2>{ev.title}</h2>
             </a>
             </Link>
         ))}
