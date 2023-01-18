@@ -7,11 +7,20 @@ import Image from "next/image";
 const SingleEvent = ({ data }) => {
   const inputEmail = useRef();
   const router = useRouter();
+  const [message, setMessage] = useState('')
 
   const onSubmit = async(e) => {
     e.preventDefault();
     const emailValue = inputEmail.current.value;
     const eventId = router?.query.id;
+
+// regext to validate email 
+           const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          if(!emailValue.match(validRegex)) {
+            setMessage('Please add valid email address')
+          }
+
+
     try{
       const response = await fetch('/api/email-registration', {
         method: 'POST',
